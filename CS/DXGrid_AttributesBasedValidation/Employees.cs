@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using DXGrid_AttributesBasedValidation;
 
 public class Employee {
     public int ID { get; set; }
@@ -11,6 +13,12 @@ public class Employee {
     public string Position { get; set; }
     [Required(AllowEmptyStrings = false, ErrorMessage = "The Department cannot be empty. Please correct.")]
     public string Department { get; set; }
+
+    [ReadOnly(true)]
+    public double Value1 { get; set; } = 19;
+
+    [MyValidationAttributeValidation]
+    public double Value2 { get; set; } = 2;
 }
 
 public static class Stuff {
