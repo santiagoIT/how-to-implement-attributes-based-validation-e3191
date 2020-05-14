@@ -11,6 +11,14 @@ namespace DXGrid_AttributesBasedValidation
   {
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
     {
+      if (value is double doubleValue)
+      {
+        if (doubleValue > 100)
+        {
+
+          return new ValidationResult("Value must be less than 100", new List<string> { validationContext.DisplayName });
+        }
+      }
 
       return ValidationResult.Success;
     }
